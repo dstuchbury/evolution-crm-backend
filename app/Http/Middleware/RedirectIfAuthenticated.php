@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return WebResponse::respondOk('logged-in', ['title' => 'Successfully logged in']);
+                return WebResponse::respondOk('logged-in', ['title' => 'Already logged in']);
 //                return redirect(RouteServiceProvider::HOME);
             }
         }
