@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\ActivityOutcome;
+use Illuminate\Support\Carbon;
 use App\Models\ActivityOutcomeType;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Carbon;
 
 class ActivityOutcomeTypeFactory extends Factory
 {
