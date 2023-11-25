@@ -8,17 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('activity_outcome_types', function (Blueprint $table) {
+        Schema::create('pipeline_stages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('confidence_weight');
-
+            $table->decimal('confidence_weighting');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('activity_outcomes_types');
+        Schema::dropIfExists('pipeline_stages');
     }
 };
