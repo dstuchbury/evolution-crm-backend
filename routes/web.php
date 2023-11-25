@@ -24,4 +24,7 @@ Route::middleware([
         return WebResponse::respondOk();
     });
 
+    Route::resource('contacts', \App\Http\Controllers\ContactController::class);
+    Route::resource('companies', \App\Http\Controllers\CompanyController::class);
+
 });
