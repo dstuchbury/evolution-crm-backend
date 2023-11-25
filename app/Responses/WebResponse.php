@@ -6,19 +6,19 @@ use Illuminate\Http\JsonResponse;
 
 class WebResponse
 {
-    public static function respondOk(string $action = null, array $messages = [], array $data = []): JsonResponse
+    public static function respondOk(string $action = null, array|null $messages = null, mixed $data = null): JsonResponse
     {
         $response = self::structure();
         $response['action'] = $action;
         $response['success'] = true;
-        $data ?? $response['data'] = $data;
+        $response['data'] = $data;
         if ($messages) {
-            foreach ($messages as $key => $value) {
-                $response['user_messages'][$key] = $value;
+            foreach ($messages as $message) {
+                $response['user_messages'][] = $message;
             }
         }
 
-        return response()->json([$response]);
+        return response()->json($response);
     }
 
     private static function structure(): array

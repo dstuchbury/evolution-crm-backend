@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,7 +32,7 @@ class Company extends Model
     public function addresses(): BelongsToMany
     {
         return $this->belongsToMany(Address::class, 'company_addresses')
-            ->withPivot(['address_type_id', 'from_date', 'to_date']);
+            ->withPivot(['from_date', 'to_date']);
     }
 
     public function contacts(): HasMany
@@ -42,6 +43,11 @@ class Company extends Model
     public function companyLists(): BelongsToMany
     {
         return $this->belongsToMany(CompanyList::class, 'company_list_members')->withPivot('from_date', 'to_date');
+    }
+
+    public function companyType(): BelongsTo
+    {
+        return $this->belongsTo(CompanyType::class);
     }
 
     /*

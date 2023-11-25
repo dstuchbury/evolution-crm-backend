@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Http\Requests\CompanyRequest;
 use App\Http\Resources\CompanyResource;
+use App\Responses\WebResponse;
 
 class CompanyController extends Controller
 {
     public function index()
     {
-        return CompanyResource::collection(Company::all());
+        return CompanyResource::collection(Company::with('companyType')->get());
     }
 
     public function store(CompanyRequest $request)
@@ -20,7 +21,20 @@ class CompanyController extends Controller
 
     public function show(Company $company)
     {
-        return new CompanyResource($company);
+        if ($company === null) {
+            return WebResponse::returnNotFound();
+        }
+        $company->load([
+            'contacts', 'activities', 'companyType', 'companyLists', 'addresses'
+        ]);
+
+//        return new CompanyResource($company);
+
+        return WebResponse::respondOk(
+            'show_company',
+            null,
+            new CompanyResource($company),
+        );
     }
 
     public function update(CompanyRequest $request, Company $company)
