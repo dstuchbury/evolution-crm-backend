@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Providers\RouteServiceProvider;
+use App\Responses\WebResponse;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return response()->json(['success' => true, 'action' => 'logged-in']);
+                return WebResponse::respondOk('logged-in', ['title' => 'Successfully logged in']);
 //                return redirect(RouteServiceProvider::HOME);
             }
         }
