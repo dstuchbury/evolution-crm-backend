@@ -12,13 +12,17 @@ class ContactResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'company_id' => $this->company_id,
             'title' => $this->title,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'position' => $this->position,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+
+            $this->mergeWhen($this->relationLoaded('activities'), ['activities' => ActivityResource::collection($this->activities)]),
+            $this->mergeWhen($this->relationLoaded('company'), ['company' => new CompanyResource($this->company)]),
+            $this->mergeWhen($this->relationLoaded('leads'), ['leads' => LeadResource::collection($this->leads)]),
+            $this->mergeWhen($this->relationLoaded('opportunities'), ['opportunities' => OpportunityResource::collection($this->opportunities)]),
         ];
     }
 }

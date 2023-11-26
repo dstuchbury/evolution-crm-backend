@@ -11,7 +11,11 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        return CompanyResource::collection(Company::with('companyType')->get());
+        return WebResponse::respondOk(
+            'list companies',
+            null,
+            CompanyResource::collection(Company::with('companyType')->get()),
+        );
     }
 
     public function store(CompanyRequest $request)
@@ -21,17 +25,12 @@ class CompanyController extends Controller
 
     public function show(Company $company)
     {
-        if ($company === null) {
-            return WebResponse::returnNotFound();
-        }
         $company->load([
-            'contacts', 'activities', 'companyType', 'companyLists', 'addresses'
+            'contacts', 'activities.contacts', 'companyType', 'companyLists', 'addresses'
         ]);
 
-//        return new CompanyResource($company);
-
         return WebResponse::respondOk(
-            'show_company',
+            'show company',
             null,
             new CompanyResource($company),
         );

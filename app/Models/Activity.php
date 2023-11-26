@@ -43,9 +43,9 @@ class Activity extends Model
         return $this->belongsTo(ActivityType::class);
     }
 
-    public function contacts(): HasMany
+    public function contacts(): BelongsToMany
     {
-        return $this->hasMany(Contact::class, 'activity_contacts');
+        return $this->belongsToMany(Contact::class, 'activity_contacts');
     }
 
     public function company(): BelongsTo
