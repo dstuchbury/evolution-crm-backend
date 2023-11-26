@@ -17,6 +17,11 @@ return new class extends Migration {
             $table->decimal('current_confidence_weighting');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index(['user_id'], 'user_id_index');
+            $table->index(['company_id'], 'company_id_index');
+            $table->index(['company_id', 'current_confidence_weighting'], 'company_id_confidence_weighting_index');
+            $table->index(['current_confidence_weighting'], 'confidence_weighting_index');
         });
     }
 

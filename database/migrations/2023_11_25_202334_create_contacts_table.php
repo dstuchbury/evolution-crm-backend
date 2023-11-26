@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('position');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index(['company_id'], 'company_id_index');
         });
     }
 

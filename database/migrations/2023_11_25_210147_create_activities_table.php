@@ -20,6 +20,10 @@ return new class extends Migration
             $table->text('notes')->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index(['company_id'], 'company_id_index');
+            $table->index(['activity_type_id'], 'activity_type_id_index');
+            $table->index(['opportunity_id'], 'opportunity_id_index');
         });
     }
 

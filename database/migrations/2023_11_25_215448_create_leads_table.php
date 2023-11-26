@@ -12,11 +12,16 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('contact_id')->nullable();
             $table->bigInteger('company_id');
+            $table->bigInteger('user_id');
             $table->string('lead_source_id');
             $table->string('title');
             $table->text('description');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index(['user_id'], 'user_id_index');
+            $table->index(['company_id'], 'company_id_index');
+            $table->index(['contact_id'], 'contact_id_index');
         });
     }
 

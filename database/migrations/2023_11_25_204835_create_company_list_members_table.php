@@ -15,6 +15,8 @@ return new class extends Migration{
             $table->date('to_date')->nullable();
 
             $table->timestamps();
+
+            $table->index(['company_id', 'company_list_id'], 'company_id_company_list_id_index');
         });
     }
 

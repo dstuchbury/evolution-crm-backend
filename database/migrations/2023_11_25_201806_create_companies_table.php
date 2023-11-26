@@ -16,6 +16,10 @@ return new class extends Migration
 
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index(['legal_name'], 'legal_name_index');
+            $table->index(['trading_name'], 'trading_name_index');
+            $table->index(['company_type_id'], 'company_type_id_index');
         });
     }
 
