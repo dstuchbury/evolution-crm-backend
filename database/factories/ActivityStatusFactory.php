@@ -12,7 +12,7 @@ class ActivityStatusFactory extends Factory
 
     public function definition(): array {
         return [
-            'name' => $this->faker->words(1),
+            'name' => fake('en_GB')->words(1, true),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

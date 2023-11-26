@@ -13,14 +13,14 @@ class AddressFactory extends Factory
     public function definition(): array
     {
         return [
-            'line_1' => $this->faker->word(),
-            'line_2' => $this->faker->word(),
-            'line_3' => $this->faker->word(),
-            'town_city' => $this->faker->city(),
-            'county_region' => $this->faker->word(),
-            'postcode_zip' => $this->faker->postcode(),
-            'country_name' => $this->faker->name(),
-            'country_code' => $this->faker->word(),
+            'line_1' => fake('en_GB')->streetAddress(),
+            'line_2' => fake('en_GB')->words(2, true),
+            'line_3' => fake('en_GB')->words(2, true),
+            'town_city' => fake('en_GB')->city(),
+            'county_region' => fake('en_GB')->words(2, true),
+            'postcode_zip' => fake('en_GB')->postcode(),
+            'country_name' => fake('en_GB')->country(),
+            'country_code' => fake('en_GB')->countryCode(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

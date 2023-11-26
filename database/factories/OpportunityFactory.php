@@ -13,13 +13,13 @@ class OpportunityFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => $this->faker->randomNumber(),
-            'company_id' => $this->faker->randomNumber(),
-            'lead_id' => $this->faker->word(),
-            'title' => $this->faker->word(),
-            'description' => $this->faker->text(),
-            'value' => $this->faker->randomFloat(),
-            'current_confidence_weighting' => $this->faker->randomFloat(),
+            'user_id' => fake('en_GB')->randomNumber(),
+            'company_id' => fake('en_GB')->randomNumber(),
+            'lead_id' => fake('en_GB')->word(),
+            'title' => fake('en_GB')->word(),
+            'description' => fake('en_GB')->text(),
+            'value' => fake('en_GB')->randomFloat(),
+            'current_confidence_weighting' => fake('en_GB')->randomFloat(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

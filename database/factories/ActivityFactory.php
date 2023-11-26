@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Activity;
+use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -13,13 +14,13 @@ class ActivityFactory extends Factory
     public function definition(): array
     {
         return [
-            'company_id' => $this->faker->randomNumber(),
-            'activity_status_id' => $this->faker->randomNumber(),
-            'activity_type_id' => $this->faker->randomNumber(),
-            'opportunity_id' => $this->faker->randomNumber(),
+            'company_id' => fake('en_GB')->randomNumber(),
+            'activity_status_id' => fake('en_GB')->randomNumber(),
+            'activity_type_id' => fake('en_GB')->randomNumber(),
+            'opportunity_id' => fake('en_GB')->randomNumber(),
             'date' => Carbon::now(),
-            'notes' => $this->faker->word(),
-            'user_id' => $this->faker->randomNumber(),
+            'notes' => fake('en_GB')->word(),
+            'user_id' => User::inRandomOrder(1234)->first(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

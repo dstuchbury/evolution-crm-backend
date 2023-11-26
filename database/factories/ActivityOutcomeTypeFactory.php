@@ -12,8 +12,8 @@ class ActivityOutcomeTypeFactory extends Factory
 
     public function definition(): array {
         return [
-            'confidence_weight' => $this->faker->randomFloat(),
-            'name' => $this->faker->words(2),
+            'confidence_weight' => fake('en_GB')->numberBetween(1, 100),
+            'name' => fake('en_GB')->words(2, true),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

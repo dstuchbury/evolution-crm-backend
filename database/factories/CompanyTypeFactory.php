@@ -13,7 +13,7 @@ class CompanyTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => fake('en_GB')->name(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

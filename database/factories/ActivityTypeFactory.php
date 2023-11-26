@@ -13,7 +13,7 @@ class ActivityTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word(),
+            'name' => fake('en_GB')->words(2, true),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

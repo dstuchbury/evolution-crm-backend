@@ -13,8 +13,8 @@ class CompanyListFactory extends Factory
     public function definition(): array
     {
         return [
-            'company_list_type_id' => $this->faker->randomNumber(),
-            'name' => $this->faker->name(),
+            'company_list_type_id' => fake('en_GB')->randomNumber(),
+            'name' => fake('en_GB')->name(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

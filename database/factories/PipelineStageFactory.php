@@ -13,8 +13,8 @@ class PipelineStageFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
-            'confidence_weighting' => $this->faker->randomFloat(),
+            'name' => fake('en_GB')->words(2, true),
+            'confidence_weighting' => fake('en_GB')->numberBetween(1, 100),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

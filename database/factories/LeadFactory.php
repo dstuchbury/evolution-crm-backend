@@ -12,12 +12,12 @@ class LeadFactory extends Factory
 
     public function definition(): array {
         return [
-            'user_id' => $this->faker->randomNumber(),
-            'contact_id' => $this->faker->randomNumber(),
-            'company_id' => $this->faker->randomNumber(),
-            'lead_source_id' => $this->faker->word(),
-            'title' => $this->faker->words(3),
-            'description' => $this->faker->text(),
+            'user_id' => fake('en_GB')->randomNumber(),
+            'contact_id' => fake('en_GB')->randomNumber(),
+            'company_id' => fake('en_GB')->randomNumber(),
+            'lead_source_id' => fake('en_GB')->word(),
+            'title' => fake('en_GB')->words(3),
+            'description' => fake('en_GB')->text(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
