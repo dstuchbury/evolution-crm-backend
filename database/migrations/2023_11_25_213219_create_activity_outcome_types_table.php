@@ -13,12 +13,13 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('confidence_weight');
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('activity_outcomes_types');
+        Schema::dropIfExists('activity_outcome_types');
     }
 };

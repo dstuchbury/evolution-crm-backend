@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('company_list_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('active_from');
+            $table->date('active_from')->default(\Carbon\Carbon::now()->toDateString());
             $table->date('active_to')->nullable();
             $table->softDeletes();
             $table->timestamps();
