@@ -21,8 +21,8 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->index(['country_name'], 'country_name_index');
-            $table->index(['country_code'], 'country_code_index');
+            $table->index(['country_name'], 'addresses-country_name_index');
+            $table->index(['country_code'], 'addresses-country_code_index');
         });
     }
 

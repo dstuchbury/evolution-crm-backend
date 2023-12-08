@@ -21,9 +21,9 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->index(['company_id'], 'company_id_index');
-            $table->index(['activity_type_id'], 'activity_type_id_index');
-            $table->index(['opportunity_id'], 'opportunity_id_index');
+            $table->index(['company_id'], 'activities-company_id_index');
+            $table->index(['activity_type_id'], 'activities-activity_type_id_index');
+            $table->index(['opportunity_id'], 'activities-opportunity_id_index');
         });
     }
 

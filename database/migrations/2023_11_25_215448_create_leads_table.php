@@ -19,9 +19,9 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->index(['user_id'], 'user_id_index');
-            $table->index(['company_id'], 'company_id_index');
-            $table->index(['contact_id'], 'contact_id_index');
+            $table->index(['user_id'], 'leads-user_id_index');
+            $table->index(['company_id'], 'leads-company_id_index');
+            $table->index(['contact_id'], 'leads-contact_id_index');
         });
     }
 

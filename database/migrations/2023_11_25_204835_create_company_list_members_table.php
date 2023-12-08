@@ -16,7 +16,7 @@ return new class extends Migration{
 
             $table->timestamps();
 
-            $table->index(['company_id', 'company_list_id'], 'company_id_company_list_id_index');
+            $table->index(['company_id', 'company_list_id'], 'company_list_members-company_id_company_list_id_index');
         });
     }
 
