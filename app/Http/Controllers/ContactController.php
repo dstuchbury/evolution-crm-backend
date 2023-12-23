@@ -3,24 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use Illuminate\Http\Request;
+use App\Responses\WebResponse;
 use App\Http\Requests\ContactRequest;
 use App\Http\Resources\ContactResource;
-use App\Responses\WebResponse;
+use App\Http\Resources\ContactCollection;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return WebResponse::respondOk(
-            'list contacts',
-            null,
-            ContactResource::collection(Contact::with('company')->get()),
-        );
+        $paginate = $request->get('paginate') ?? 10;
+        return new ContactCollection(ContactResource::collection(Contact::with('company')->paginate($paginate)));
     }
 
     public function store(ContactRequest $request)
     {
-        return new ContactResource(Contact::create($request->validated()));
+        return new ContactResource(Contact::create($request->validated())->load('company'));
     }
 
     public function show(Contact $contact)

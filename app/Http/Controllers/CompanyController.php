@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CompanyCollection;
 use App\Models\Company;
 use App\Http\Requests\CompanyRequest;
 use App\Http\Resources\CompanyResource;
 use App\Responses\WebResponse;
+use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return WebResponse::respondOk(
-            'list companies',
-            null,
-            CompanyResource::collection(Company::with('companyType')->get()),
-        );
+        $paginate = $request->get('paginate') ?? 10;
+        return new CompanyCollection(CompanyResource::collection(Company::with('companyType')->paginate($paginate)));
     }
 
     public function store(CompanyRequest $request)

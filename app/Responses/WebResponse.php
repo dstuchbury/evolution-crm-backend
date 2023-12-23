@@ -54,9 +54,11 @@ class WebResponse
     private static function structure(): array
     {
         return [
-            'action' => null,
-            'success' => null,
-            'user_messages' => [],
+            'meta' => [
+                'action' => null,
+                'success' => null,
+                'user_messages' => [],
+            ],
             'data' => []
         ];
     }

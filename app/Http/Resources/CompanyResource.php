@@ -14,8 +14,8 @@ class CompanyResource extends JsonResource
             'id' => $this->id,
             'legal_name' => $this->legal_name,
             'trading_name' => $this->trading_name,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+//            'created_at' => $this->created_at,
+//            'updated_at' => $this->updated_at,
 
             $this->mergeWhen($this->relationLoaded('activities'), ['activities' => ActivityResource::collection($this->activities)]),
             $this->mergeWhen($this->relationLoaded('addresses'), ['addresses' => AddressResource::collection($this->addresses)]),
