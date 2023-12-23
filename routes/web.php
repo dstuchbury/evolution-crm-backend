@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware('web')->get('api-only', function () {
+    return WebResponse::respondUnauthorised('Browser request to backend');
+})->name('login');
+
 Route::middleware([
 //    'web',
     'auth:sanctum'
