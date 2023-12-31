@@ -23,18 +23,19 @@ class ContactCollection extends ResourceCollection
         parent::__construct($resource);
     }
 
-    public function toArray(Request $request): array {
+    public function toArray(Request $request): array
+    {
         return [
             'data' => $this->collection,
             'pagination' => $this->pagination,
         ];
     }
 
-    public function with(Request $request)
+    public function with(Request $request): array
     {
         return [
             'meta' => [
-                'action' => 'list companies',
+                'action' => 'list contacts',
                 'success' => true,
                 'user_messages' => [],
             ],

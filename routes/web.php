@@ -20,8 +20,8 @@ Route::middleware('web')->get('api-only', function () {
 })->name('login');
 
 Route::middleware([
-//    'web',
-    'auth:sanctum'
+    'throttle:web',
+    'auth:sanctum',
 ])->group( function() {
 
     Route::get('/', function() {
